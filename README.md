@@ -1,7 +1,6 @@
 # MORSE: Morphological Observation with Reweighted Spectral Encoding
 
-> **Paper:** *MORSE: Leveraging Morphological and Spectral Priors for Early Disease Detection*
-> **Journal:** Journal of Computers, Mechanical and Management (JCMM), 2026
+
 
 A lightweight **~0.40 M parameter** medical image classifier trained **from random initialisation** — no ImageNet pretraining required. MORSE combines three domain-grounded components:
 
