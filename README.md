@@ -32,12 +32,12 @@ bash download.sh
 
 Or download manually from Kaggle and place inside `datasets/`:
 
-| Dataset | Classes | Images | Kaggle |
-|---------|---------|--------|--------|
-| Skin Disease | 9 | 878 | [Link](https://www.kaggle.com/datasets/riyaelizashaju/skin-disease-classification-image-dataset) |
-| Nail Disease | 3 | 1,466 | [Link](https://www.kaggle.com/datasets/josephrasanjana/nail-disease-image-classification-dataset) |
-| Eye Disease | 4 | 4,217 | [Link](https://www.kaggle.com/datasets/gunavenkatdoddi/eye-diseases-classification) |
-| Alzheimer''s MRI | 4 | 44,000 | [Link](https://www.kaggle.com/datasets/aryansinghal10/alzheimers-multiclass-dataset-equal-and-augmented) |
+| Dataset | Classes | Images |
+|---------|---------|--------|
+| Skin Disease | 9 | 878 |
+| Nail Disease | 3 | 1,466 |
+| Eye Disease | 4 | 4,217 |
+| Alzheimer's MRI | 4 | 44,000 |
 
 Expected structure after download:
 
@@ -75,6 +75,5 @@ Key hyperparameters (set in `CONFIG` inside `train.py`):
 | Optimizer | AdamW (lr=1e-3, wd=0.01) |
 | Early stopping patience | 10 |
 | Seed | 42 |
-| Split | 70 / 15 / 15 (train / val / test) |
 
 Results are saved to `Results/`.
