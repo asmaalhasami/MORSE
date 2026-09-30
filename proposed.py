@@ -425,9 +425,9 @@ if __name__ == "__main__":
 
     # Test configurations
     configs = [
-        {'base_width': 32, 'num_blocks': 2, 'batch_size': 32, 'desc': 'Default (small)'},
-        {'base_width': 32, 'num_blocks': 3, 'batch_size': 32, 'desc': 'Medium depth'},
-        {'base_width': 64, 'num_blocks': 2, 'batch_size': 16, 'desc': 'Wider channels'},
+        {'base_width': 32, 'num_blocks': 2, 'batch_size': 6, 'desc': 'Default (small)'},
+        {'base_width': 32, 'num_blocks': 3, 'batch_size': 6, 'desc': 'Medium depth'},
+        {'base_width': 64, 'num_blocks': 2, 'batch_size': 6, 'desc': 'Wider channels'},
     ]
 
     for config in configs:

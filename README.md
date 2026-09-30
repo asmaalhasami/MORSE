@@ -1,6 +1,8 @@
 # MORSE: Morphological Observation with Reweighted Spectral Encoding
 
-
+> **Paper:** *MORSE: Leveraging Morphological and Spectral Priors for Early Disease Detection*
+> **Journal:** Journal of Computers, Mechanical and Management (JCMM), 2026
+> **Repository:** https://github.com/asmaalhasami/MORSE
 
 A lightweight **~0.40 M parameter** medical image classifier trained **from random initialisation** — no ImageNet pretraining required. MORSE combines three domain-grounded components:
 
@@ -16,9 +18,9 @@ A lightweight **~0.40 M parameter** medical image classifier trained **from rand
 |------|-------------|
 | `proposed.py` | Full MORSE model (`MorphSpectralClassifier`) |
 | `train.py` | Benchmark training script — MORSE + 8 baselines |
+| `confusion_matrices.json` | Complete empirical confusion matrices for all reported tables and experiments |
+| `predictions_summary.csv` | Summary metrics per model and dataset |
 | `download.sh` | Auto-downloads all 4 Kaggle datasets |
-| `confusion_matrices.json` | Per-model confusion matrices (all 36) |
-| `predictions_summary.csv` | Test prediction records |
 
 ---
 
@@ -32,22 +34,34 @@ bash download.sh
 
 Or download manually from Kaggle and place inside `datasets/`:
 
-| Dataset | Classes | Images |
-|---------|---------|--------|
-| Skin Disease | 9 | 878 |
-| Nail Disease | 3 | 1,466 |
-| Eye Disease | 4 | 4,217 |
-| Alzheimer's MRI | 4 | 44,000 |
+| Dataset | Classes | Images | Kaggle |
+|---------|---------|--------|--------|
+| Skin Disease | 9 | 878 | [Link](https://www.kaggle.com/datasets/riyaelizashaju/skin-disease-classification-image-dataset) |
+| Nail Disease | 3 | 1,466 | [Link](https://www.kaggle.com/datasets/josephrasanjana/nail-disease-image-classification-dataset) |
+| Eye Disease | 4 | 4,217 | [Link](https://www.kaggle.com/datasets/gunavenkatdoddi/eye-diseases-classification) |
+| Alzheimer's MRI | 4 | 44,000 | [Link](https://www.kaggle.com/datasets/aryansinghal10/alzheimers-multiclass-dataset-equal-and-augmented) |
 
 Expected structure after download:
 
 ```
 datasets/
-  skin_disease/   acne/  atopic_dermatitis/  cellulitis/  ...
+  skin_disease/   acne/  atopic_dermatitis/  cellulitis/  eczema/  impetigo/  melanoma/  psoriasis/  ringworm/  vitiligo/
   nail_disease/   acral_lentiginous_melanoma/  onychomycosis/  nail_psoriasis/
   eye_disease/    normal/  cataract/  diabetic_retinopathy/  glaucoma/
   alzheimers/     NonDemented/  VeryMildDemented/  MildDemented/  ModerateDemented/
 ```
+
+---
+
+## RadImageNet Pretrained Weights
+
+The `resnet50_radimagenet` baseline (Table 7) requires the official RadImageNet-pretrained ResNet-50 checkpoint, released by [BMEII-AI/RadImageNet](https://github.com/BMEII-AI/RadImageNet) (Mei et al., 2022).
+
+1. Download the PyTorch checkpoint from the official RadImageNet repository above.
+2. Place it at `checkpoints/ResNet50_RadImageNet_pytorch.pt`.
+3. Run `train.py` with the `resnet50_radimagenet` model key — the checkpoint is loaded automatically at that path (see `create_model()` in `train.py`).
+
+If the checkpoint is not found, `train.py` prints a warning and falls back to a randomly initialized ResNet-50 rather than failing silently.
 
 ---
 
@@ -59,7 +73,16 @@ pip install torch torchvision timm scikit-learn numpy pandas tqdm Pillow
 
 ---
 
-## Training
+## Reproducing Results
+
+The complete empirical confusion matrices for every reported table and experiment (benchmark, ablation, pretrained-baseline, multi-seed, and sensitivity) are archived in `confusion_matrices.json`, so every reported metric can be checked directly against its underlying per-class counts without rerunning training.
+
+### Note on Environmental and Hardware Reproducibility
+All primary models are trained under an identical stratified 70/15/15 split on an NVIDIA Tesla L4 GPU. On small-cohort evaluation benchmarks (such as the 132-image Skin Disease test set, where each individual test sample accounts for approximately 0.76% in Overall Accuracy), minor numerical variations ($\pm 1$ to $2$ samples) can naturally emerge from CUDA/cuDNN floating-point non-determinism. To ensure full transparency and reproducible auditability, the complete empirical confusion matrices, per-class supports, and chance-adjusted metric summaries are preserved in `confusion_matrices.json`.
+
+---
+
+## Training from Scratch
 
 ```bash
 # Train MORSE + all 8 baselines on all 4 datasets
@@ -71,9 +94,11 @@ Key hyperparameters (set in `CONFIG` inside `train.py`):
 | Setting | Value |
 |---------|-------|
 | Epochs | 30 |
-| Batch size | 6 (× 4 grad accum = 24 effective) |
+| Batch size | 6 |
 | Optimizer | AdamW (lr=1e-3, wd=0.01) |
 | Early stopping patience | 10 |
 | Seed | 42 |
+| Split | 70 / 15 / 15 (train / val / test) |
+| Augmentation | Disabled (`use_augmentation: False` in `CONFIG`) to evaluate raw inductive capability |
 
-Results are saved to `Results/`.
+Results and logs are saved to `Results/`.

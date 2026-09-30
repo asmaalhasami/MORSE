@@ -37,10 +37,10 @@ CONFIG = {
     'use_pretrained': False,  # Whether to use pretrained weights
     'seed': 42,
 
-    # Data Split Settings
-    'train_split': 0.7,  # 70% training
-    'val_split': 0.10,  
-    'test_split': 0.20,  
+    # Data Split Settings (70% Train / 15% Val / 15% Test)
+    'train_split': 0.70,  # 70% training
+    'val_split': 0.15,    # 15% validation
+    'test_split': 0.15,   # 15% testing  
 
     # Training Hyperparameters
     'epochs': 30,
@@ -62,8 +62,8 @@ CONFIG = {
     'patience': 10,
 
     # Augmentation
-    'use_augmentation': True,
-    'augmentation_strength': 'medium',  # 'light', 'medium', 'heavy'
+    'use_augmentation': False,
+    'augmentation_strength': 'medium',  # 'light', 'medium', 'heavy' (unused when use_augmentation is False)
 }
 
 # ==================== MODEL CONFIGURATIONS ====================
@@ -84,6 +84,17 @@ MODELS_CONFIG = {
         'type': 'CNN',
         'description': 'Residual Network 50 layers',
         'is_custom': False
+    },
+    'resnet50_radimagenet': {
+        'name': 'resnet50_radimagenet',
+        'params': '23.5M',
+        'type': 'CNN',
+        'description': 'ResNet-50 pretrained on RadImageNet (Mei et al., 2022)',
+        'is_custom': False,
+        'pretrained_source': 'radimagenet',
+        # Download the PyTorch checkpoint from the official repo (see README.md,
+        # "RadImageNet Pretrained Weights") and place it at this path.
+        'checkpoint_path': 'checkpoints/ResNet50_RadImageNet_pytorch.pt'
     },
     'convnext_tiny': {
         'name': 'convnext_tiny.fb_in22k_ft_in1k',
@@ -138,16 +149,16 @@ DATASET_CONFIGS = {
             'datasets/skin_disease/Split_smol/train',
             'datasets/skin_disease/Split_smol/val'
         ],
-        'classes': ['Actinic keratosis', 'Atopic Dermatitis', 'Benign keratosis', 
-                   'Dermatofibroma', 'Melanocytic nevus', 'Melanoma', 
-                   'Squamous cell carcinoma', 'Tinea Ringworm Candidiasis', 'Vascular lesion']
+        'classes': ['Acne', 'Atopic Dermatitis', 'Cellulitis',
+                   'Eczema', 'Impetigo', 'Melanoma',
+                   'Psoriasis', 'Ringworm', 'Vitiligo']
     },
     'nail_disease': {
         'paths': [
             'datasets/nail_disease/nail_disease_dataset/train',
             'datasets/nail_disease/nail_disease_dataset/test'
         ],
-        'classes': ['healthy', 'onychomycosis', 'psoriasis']
+        'classes': ['Acral Lentiginous Melanoma', 'Onychomycosis', 'Nail Psoriasis']
     },
     'eye_disease': {
         'paths': ['datasets/eye_disease/dataset'],
@@ -430,14 +441,29 @@ def create_model(model_key, num_classes, config):
             model = MorphSpectralClassifier(
                 in_channels=3,
                 num_classes=num_classes,
-                morph_radii=(1, 2, 4), 
+                morph_radii=(1, 2, 4),
                 base_width=32,
-                num_blocks=5,
+                num_blocks=2,
                 dropout=0.3
             )
             print(f"Created custom model: {model_config['name']}")
         else:
             raise ValueError(f"Unknown custom model: {model_key}")
+    elif model_config.get('pretrained_source') == 'radimagenet':
+        # RadImageNet-pretrained ResNet-50 baseline (see README.md for checkpoint download).
+        import torchvision
+        model = torchvision.models.resnet50(weights=None)
+        ckpt_path = model_config['checkpoint_path']
+        if os.path.exists(ckpt_path):
+            state_dict = torch.load(ckpt_path, map_location='cpu')
+            model.load_state_dict(state_dict, strict=False)
+            print(f"Loaded RadImageNet pretrained weights from {ckpt_path}")
+        else:
+            print(f"WARNING: RadImageNet checkpoint not found at '{ckpt_path}'. "
+                  f"Download it as described in README.md ('RadImageNet Pretrained Weights') "
+                  f"and place it at this path. Proceeding with a randomly initialized ResNet-50.")
+        model.fc = nn.Linear(model.fc.in_features, num_classes)
+        print(f"Created model: {model_config['name']}")
     else:
         # Standard timm model
         model = timm.create_model(
