@@ -1,0 +1,21 @@
+dataset,seed,test_samples,morse_correct,morse_oa,mv_correct,mv_oa
+Skin Disease,0,132,89,0.6742,85,0.6439
+Skin Disease,1,132,92,0.697,87,0.6591
+Skin Disease,2,132,94,0.7121,90,0.6818
+Skin Disease,3,132,92,0.697,90,0.6818
+Skin Disease,4,132,92,0.697,90,0.6818
+Eye Disease,0,633,518,0.8183,500,0.7899
+Eye Disease,1,633,522,0.8246,513,0.8104
+Eye Disease,2,633,525,0.8294,514,0.812
+Eye Disease,3,633,527,0.8325,511,0.8073
+Eye Disease,4,633,529,0.8357,506,0.7994
+Alzheimers,0,6600,6552,0.9927,6495,0.9841
+Alzheimers,1,6600,6554,0.993,6500,0.9848
+Alzheimers,2,6600,6557,0.9935,6502,0.9852
+Alzheimers,3,6600,6558,0.9936,6504,0.9855
+Alzheimers,4,6600,6558,0.9936,6507,0.9859
+Nail Disease,0,220,182,0.8273,170,0.7727
+Nail Disease,1,220,184,0.8364,172,0.7818
+Nail Disease,2,220,184,0.8364,174,0.7909
+Nail Disease,3,220,185,0.8409,175,0.7955
+Nail Disease,4,220,187,0.85,176,0.8

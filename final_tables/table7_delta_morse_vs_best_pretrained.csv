@@ -1,0 +1,5 @@
+Dataset,MORSE_FS_OA,best_PT_model,best_PT_OA,delta,delta_images,comparable_le_2_images
+skin,0.5227,MaxViT-T,0.7955,-0.2728,-36,False
+nail,0.8545,MaxViT-T,0.9591,-0.1046,-23,False
+eye,0.8436,ResNet-50,0.8942,-0.0506,-32,False
+alzheimers,0.9277,MaxViT-T,0.998,-0.0703,-464,False

@@ -1,0 +1,181 @@
+Dataset,Model,Class,Support,Accuracy
+skin,MORSE,Actinic keratosis,15,0.5333
+skin,MORSE,Atopic Dermatitis,16,0.6875
+skin,MORSE,Benign keratosis,15,0.5333
+skin,MORSE,Dermatofibroma,15,0.4
+skin,MORSE,Melanocytic nevus,15,0.8
+skin,MORSE,Melanoma,15,0.1333
+skin,MORSE,Squamous cell carcinoma,15,0.2667
+skin,MORSE,Tinea Ringworm Candidiasis,11,0.4545
+skin,MORSE,Vascular lesion,15,0.8667
+skin,ResNet-50,Actinic keratosis,15,0.6
+skin,ResNet-50,Atopic Dermatitis,16,0.75
+skin,ResNet-50,Benign keratosis,15,0.5333
+skin,ResNet-50,Dermatofibroma,15,0.4667
+skin,ResNet-50,Melanocytic nevus,15,0.5333
+skin,ResNet-50,Melanoma,15,0.2667
+skin,ResNet-50,Squamous cell carcinoma,15,0.2667
+skin,ResNet-50,Tinea Ringworm Candidiasis,11,0.2727
+skin,ResNet-50,Vascular lesion,15,0.9333
+skin,ConvNeXt-Tiny,Actinic keratosis,15,0.4
+skin,ConvNeXt-Tiny,Atopic Dermatitis,16,0.875
+skin,ConvNeXt-Tiny,Benign keratosis,15,0.6
+skin,ConvNeXt-Tiny,Dermatofibroma,15,0.2
+skin,ConvNeXt-Tiny,Melanocytic nevus,15,0.6
+skin,ConvNeXt-Tiny,Melanoma,15,0.3333
+skin,ConvNeXt-Tiny,Squamous cell carcinoma,15,0.2667
+skin,ConvNeXt-Tiny,Tinea Ringworm Candidiasis,11,0.1818
+skin,ConvNeXt-Tiny,Vascular lesion,15,0.6667
+skin,RegNetY-040,Actinic keratosis,15,0.3333
+skin,RegNetY-040,Atopic Dermatitis,16,0.8125
+skin,RegNetY-040,Benign keratosis,15,0.8
+skin,RegNetY-040,Dermatofibroma,15,0.5333
+skin,RegNetY-040,Melanocytic nevus,15,0.5333
+skin,RegNetY-040,Melanoma,15,0.6
+skin,RegNetY-040,Squamous cell carcinoma,15,0.4
+skin,RegNetY-040,Tinea Ringworm Candidiasis,11,0.7273
+skin,RegNetY-040,Vascular lesion,15,0.8667
+skin,ViT-S,Actinic keratosis,15,0.2
+skin,ViT-S,Atopic Dermatitis,16,0.6875
+skin,ViT-S,Benign keratosis,15,0.4
+skin,ViT-S,Dermatofibroma,15,0.0
+skin,ViT-S,Melanocytic nevus,15,0.5333
+skin,ViT-S,Melanoma,15,0.0
+skin,ViT-S,Squamous cell carcinoma,15,0.2
+skin,ViT-S,Tinea Ringworm Candidiasis,11,0.0909
+skin,ViT-S,Vascular lesion,15,0.8667
+skin,DeiT-S,Actinic keratosis,15,0.2
+skin,DeiT-S,Atopic Dermatitis,16,0.6875
+skin,DeiT-S,Benign keratosis,15,0.4
+skin,DeiT-S,Dermatofibroma,15,0.0
+skin,DeiT-S,Melanocytic nevus,15,0.5333
+skin,DeiT-S,Melanoma,15,0.0
+skin,DeiT-S,Squamous cell carcinoma,15,0.2
+skin,DeiT-S,Tinea Ringworm Candidiasis,11,0.0909
+skin,DeiT-S,Vascular lesion,15,0.8667
+skin,Swin-T,Actinic keratosis,15,0.0
+skin,Swin-T,Atopic Dermatitis,16,0.5625
+skin,Swin-T,Benign keratosis,15,0.0
+skin,Swin-T,Dermatofibroma,15,0.0
+skin,Swin-T,Melanocytic nevus,15,0.4667
+skin,Swin-T,Melanoma,15,0.0
+skin,Swin-T,Squamous cell carcinoma,15,0.0
+skin,Swin-T,Tinea Ringworm Candidiasis,11,0.0
+skin,Swin-T,Vascular lesion,15,0.9333
+skin,MaxViT-T,Actinic keratosis,15,0.4667
+skin,MaxViT-T,Atopic Dermatitis,16,0.875
+skin,MaxViT-T,Benign keratosis,15,0.4
+skin,MaxViT-T,Dermatofibroma,15,0.0
+skin,MaxViT-T,Melanocytic nevus,15,0.6
+skin,MaxViT-T,Melanoma,15,0.4
+skin,MaxViT-T,Squamous cell carcinoma,15,0.2667
+skin,MaxViT-T,Tinea Ringworm Candidiasis,11,0.2727
+skin,MaxViT-T,Vascular lesion,15,0.6
+skin,MambaVision-T,Actinic keratosis,15,0.4
+skin,MambaVision-T,Atopic Dermatitis,16,0.875
+skin,MambaVision-T,Benign keratosis,15,0.6667
+skin,MambaVision-T,Dermatofibroma,15,0.4
+skin,MambaVision-T,Melanocytic nevus,15,0.8667
+skin,MambaVision-T,Melanoma,15,0.1333
+skin,MambaVision-T,Squamous cell carcinoma,15,0.1333
+skin,MambaVision-T,Tinea Ringworm Candidiasis,11,0.3636
+skin,MambaVision-T,Vascular lesion,15,0.9333
+nail,MORSE,healthy,47,0.8936
+nail,MORSE,onychomycosis,108,0.8704
+nail,MORSE,psoriasis,65,0.8
+nail,ResNet-50,healthy,47,0.8298
+nail,ResNet-50,onychomycosis,108,0.9352
+nail,ResNet-50,psoriasis,65,0.8308
+nail,ConvNeXt-Tiny,healthy,47,0.9149
+nail,ConvNeXt-Tiny,onychomycosis,108,0.8426
+nail,ConvNeXt-Tiny,psoriasis,65,0.5692
+nail,RegNetY-040,healthy,47,0.9574
+nail,RegNetY-040,onychomycosis,108,0.9259
+nail,RegNetY-040,psoriasis,65,0.8154
+nail,ViT-S,healthy,47,0.5532
+nail,ViT-S,onychomycosis,108,0.8241
+nail,ViT-S,psoriasis,65,0.4308
+nail,DeiT-S,healthy,47,0.5532
+nail,DeiT-S,onychomycosis,108,0.8241
+nail,DeiT-S,psoriasis,65,0.4308
+nail,Swin-T,healthy,47,0.0
+nail,Swin-T,onychomycosis,108,1.0
+nail,Swin-T,psoriasis,65,0.0
+nail,MaxViT-T,healthy,47,0.9149
+nail,MaxViT-T,onychomycosis,108,0.8241
+nail,MaxViT-T,psoriasis,65,0.8615
+nail,MambaVision-T,healthy,47,0.7872
+nail,MambaVision-T,onychomycosis,108,0.8333
+nail,MambaVision-T,psoriasis,65,0.4769
+eye,MORSE,cataract,156,0.8397
+eye,MORSE,diabetic_retinopathy,165,0.9818
+eye,MORSE,glaucoma,151,0.649
+eye,MORSE,normal,161,0.8882
+eye,ResNet-50,cataract,156,0.9231
+eye,ResNet-50,diabetic_retinopathy,165,0.9879
+eye,ResNet-50,glaucoma,151,0.6225
+eye,ResNet-50,normal,161,0.8261
+eye,ConvNeXt-Tiny,cataract,156,0.7051
+eye,ConvNeXt-Tiny,diabetic_retinopathy,165,0.9273
+eye,ConvNeXt-Tiny,glaucoma,151,0.5166
+eye,ConvNeXt-Tiny,normal,161,0.7019
+eye,RegNetY-040,cataract,156,0.9487
+eye,RegNetY-040,diabetic_retinopathy,165,0.9939
+eye,RegNetY-040,glaucoma,151,0.6026
+eye,RegNetY-040,normal,161,0.8261
+eye,ViT-S,cataract,156,0.4679
+eye,ViT-S,diabetic_retinopathy,165,0.4788
+eye,ViT-S,glaucoma,151,0.0
+eye,ViT-S,normal,161,0.764
+eye,DeiT-S,cataract,156,0.4679
+eye,DeiT-S,diabetic_retinopathy,165,0.4788
+eye,DeiT-S,glaucoma,151,0.0
+eye,DeiT-S,normal,161,0.764
+eye,Swin-T,cataract,156,0.0897
+eye,Swin-T,diabetic_retinopathy,165,0.1818
+eye,Swin-T,glaucoma,151,0.947
+eye,Swin-T,normal,161,0.0
+eye,MaxViT-T,cataract,156,0.5641
+eye,MaxViT-T,diabetic_retinopathy,165,0.6788
+eye,MaxViT-T,glaucoma,151,0.0199
+eye,MaxViT-T,normal,161,0.7205
+eye,MambaVision-T,cataract,156,0.7115
+eye,MambaVision-T,diabetic_retinopathy,165,0.9818
+eye,MambaVision-T,glaucoma,151,0.6623
+eye,MambaVision-T,normal,161,0.7578
+alzheimers,MORSE,NonDemented,1920,0.8656
+alzheimers,MORSE,VeryMildDemented,1680,0.8929
+alzheimers,MORSE,MildDemented,1500,0.9747
+alzheimers,MORSE,ModerateDemented,1500,0.9993
+alzheimers,ResNet-50,NonDemented,1920,0.9526
+alzheimers,ResNet-50,VeryMildDemented,1680,0.9571
+alzheimers,ResNet-50,MildDemented,1500,0.9907
+alzheimers,ResNet-50,ModerateDemented,1500,1.0
+alzheimers,ConvNeXt-Tiny,NonDemented,1920,0.8938
+alzheimers,ConvNeXt-Tiny,VeryMildDemented,1680,0.8286
+alzheimers,ConvNeXt-Tiny,MildDemented,1500,0.8367
+alzheimers,ConvNeXt-Tiny,ModerateDemented,1500,0.9913
+alzheimers,RegNetY-040,NonDemented,1920,0.9672
+alzheimers,RegNetY-040,VeryMildDemented,1680,0.9685
+alzheimers,RegNetY-040,MildDemented,1500,0.992
+alzheimers,RegNetY-040,ModerateDemented,1500,1.0
+alzheimers,ViT-S,NonDemented,1920,0.6266
+alzheimers,ViT-S,VeryMildDemented,1680,0.2417
+alzheimers,ViT-S,MildDemented,1500,0.2787
+alzheimers,ViT-S,ModerateDemented,1500,0.712
+alzheimers,DeiT-S,NonDemented,1920,0.6266
+alzheimers,DeiT-S,VeryMildDemented,1680,0.2417
+alzheimers,DeiT-S,MildDemented,1500,0.2787
+alzheimers,DeiT-S,ModerateDemented,1500,0.712
+alzheimers,Swin-T,NonDemented,1920,1.0
+alzheimers,Swin-T,VeryMildDemented,1680,0.0
+alzheimers,Swin-T,MildDemented,1500,0.0
+alzheimers,Swin-T,ModerateDemented,1500,0.0
+alzheimers,MaxViT-T,NonDemented,1920,0.9604
+alzheimers,MaxViT-T,VeryMildDemented,1680,0.9643
+alzheimers,MaxViT-T,MildDemented,1500,0.9793
+alzheimers,MaxViT-T,ModerateDemented,1500,0.9993
+alzheimers,MambaVision-T,NonDemented,1920,0.937
+alzheimers,MambaVision-T,VeryMildDemented,1680,0.9089
+alzheimers,MambaVision-T,MildDemented,1500,0.956
+alzheimers,MambaVision-T,ModerateDemented,1500,1.0

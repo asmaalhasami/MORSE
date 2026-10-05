@@ -18,8 +18,14 @@ A lightweight **~0.40 M parameter** medical image classifier trained **from rand
 |------|-------------|
 | `proposed.py` | Full MORSE model (`MorphSpectralClassifier`) |
 | `train.py` | Benchmark training script — MORSE + 8 baselines |
-| `confusion_matrices.json` | Complete empirical confusion matrices for all reported tables and experiments |
+| `confusion_matrices.json` | Empirical confusion matrices for primary benchmarks (Tables 4 and 5) and reference distributions |
 | `predictions_summary.csv` | Summary metrics per model and dataset |
+| `run_ablation.py` | Reproduces Table 6 ablation and replacement evaluations from evaluated counts |
+| `run_pretrained.py` | Reproduces Table 7 pretrained baseline comparisons |
+| `run_seeds.py` | Reproduces Table 8 multi-seed evaluation (seeds 0 to 4) from evaluated per-seed records |
+| `run_sensitivity.py` | Reproduces Table 9 hyperparameter sensitivity analysis across 3 seeds (seeds 0 to 2) |
+| `make_tables.py` | Comprehensive verification script reconstructing all paper tables |
+| `final_tables/` | Per-seed evaluation CSV archives (`table8_per_seed.csv`, `table9_per_seed.csv`, `table6_ablation_skin.csv`) |
 | `download.sh` | Auto-downloads all 4 Kaggle datasets |
 
 ---
@@ -75,10 +81,10 @@ pip install torch torchvision timm scikit-learn numpy pandas tqdm Pillow
 
 ## Reproducing Results
 
-The complete empirical confusion matrices for every reported table and experiment (benchmark, ablation, pretrained-baseline, multi-seed, and sensitivity) are archived in `confusion_matrices.json`, so every reported metric can be checked directly against its underlying per-class counts without rerunning training.
+Measured empirical confusion matrices are archived for the primary benchmark models (Tables 4 and 5) in `confusion_matrices.json`. Per-sample predictions for the secondary experiments (Tables 6, 8, 9, and Section 4.5.4) were not preserved; for those experiments, the evaluated correct prediction counts and accuracies are reported in `final_tables/` (`table8_per_seed.csv`, `table9_per_seed.csv`, `table6_ablation_skin.csv`), and any per-class reference matrices in `confusion_matrices.json` are reconstructed distributions calibrated from those counts rather than measured per-sample outputs.
 
 ### Note on Environmental and Hardware Reproducibility
-All primary models are trained under an identical stratified 70/15/15 split on an NVIDIA Tesla L4 GPU. On small-cohort evaluation benchmarks (such as the 132-image Skin Disease test set, where each individual test sample accounts for approximately 0.76% in Overall Accuracy), minor numerical variations ($\pm 1$ to $2$ samples) can naturally emerge from CUDA/cuDNN floating-point non-determinism. To ensure full transparency and reproducible auditability, the complete empirical confusion matrices, per-class supports, and chance-adjusted metric summaries are preserved in `confusion_matrices.json`.
+All primary models are trained under an identical stratified 70/15/15 split on an NVIDIA Tesla L4 GPU. On small-cohort evaluation benchmarks (such as the 132-image Skin Disease test set, where each individual test sample accounts for approximately 0.76% in Overall Accuracy), minor numerical variations ($\pm 1$ to $2$ samples) can naturally emerge from CUDA/cuDNN floating-point non-determinism. Empirical confusion matrices for primary benchmarks are preserved in `confusion_matrices.json`.
 
 ---
 

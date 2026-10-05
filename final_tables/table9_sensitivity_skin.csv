@@ -1,0 +1,12 @@
+Setting,Value,Default,Params_M,OA,correct,n
+blocks,1,False,0.0858,0.6061,80,132
+blocks,2,True,0.3416,0.5227,69,132
+blocks,3,False,1.3528,0.6212,82,132
+blocks,4,False,5.374,0.5985,79,132
+width,16,False,0.0887,0.6212,82,132
+width,32,True,0.3416,0.5227,69,132
+width,64,False,1.3405,0.5985,79,132
+radii,1,False,0.3364,0.5455,72,132
+radii,1-2,False,0.339,0.5455,72,132
+radii,1-2-4,True,0.3416,0.5227,69,132
+radii,1-2-4-8,False,0.3442,0.6061,80,132

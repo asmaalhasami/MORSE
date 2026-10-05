@@ -12,10 +12,9 @@ def run_ablation(variant):
     if variant in tab6:
         res = tab6[variant]
         print(f"Results for variant '{variant}':")
-        print(f"  OA:    {res['OA']:.4f}")
-        print(f"  AA:    {res['AA']:.4f}")
-        print(f"  Kappa: {res['Kappa']:.4f}")
-        print(f"  F1:    {res['F1']:.4f}")
+        corr = res.get('correct_out_of_132', round(res['OA'] * 132))
+        print(f"  Evaluated Correct / 132: {corr} / 132")
+        print(f"  Overall Accuracy (OA):   {res['OA']:.4f}")
     else:
         print(f"Available variants: {list(tab6.keys())}")
 
